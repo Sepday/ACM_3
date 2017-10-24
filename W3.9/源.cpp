@@ -9,19 +9,23 @@ int main()
 	while ((scanf_s("%s", s,100001) != EOF)&&(scanf_s("%s", t,100001) != EOF))
 	{
 		bool a = false;
-		for (unsigned int i = 0; i < strlen(t); i++)
+		unsigned int k = 0;
+		for (unsigned int i = 0; i < strlen(s); i++)
 		{
-			if (t[i] == s[0])
-			{
-				a = true;
-				for (unsigned int j = 0; j < strlen(s); j++)
+				for (unsigned int j = k; j < strlen(t); j++)
 				{
-					if (s[j] != t[i + j])
+					if (s[i] == t[j])
 					{
-						a = false;
+						a = true;
+						k = j+1;
+						break;
 					}
+					a = false;
 				}
-			}
+				if (!a)
+				{
+					break;
+				}
 		}
 		if (a)
 		{
